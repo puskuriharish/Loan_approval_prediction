@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approval Prediction</title>
+    <style>
+        body { background: #f4f4f4; font-family: Arial, sans-serif; text-align: center; }
+        form { background: white; padding: 20px; border-radius: 10px; width: 50%; margin: auto; }
+        input, button { width: 80%; padding: 10px; margin: 10px; border: 1px solid #ddd; }
+        button { background: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .result { font-size: 20px; font-weight: bold; color: blue; }
+    </style>    
+    
+</head>
+<body>
+    <h1>Loan Approval Prediction</h1>
+    
+    <form action="/predict" method="post">
+        <input type="number" step="any" name="no_of_dependents" placeholder="No of Dependents" required><br>
+        <input type="number" step="any" name="education" placeholder="Education (1 = Graduate, 0 = Not Graduate)" required><br>
+        <input type="number" step="any" name="self_employed" placeholder="Self Employed (1 = Yes, 0 = No)" required><br>
+        <input type="number" step="any" name="income_annum" placeholder="Annual Income" required><br>
+        <input type="number" step="any" name="loan_amount" placeholder="Loan Amount" required><br>
+        <input type="number" step="any" name="loan_term" placeholder="Loan Term (in months)" required><br>
+        <input type="number" step="any" name="cibil_score" placeholder="CIBIL Score" required><br>
+        <input type="number" step="any" name="Assets_Sum" placeholder="Total Assets Value" required><br>
+        <button type="submit">Predict</button>
+    </form>
+    
+
+    {% if prediction %}
+        <p class="result">Prediction: {{ prediction }}</p>
+    {% endif %}
+</body>
+</html>
